@@ -13,15 +13,19 @@ import com.projetoSpring.courseSpring.repositories.UserRepository;
 public class UserService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository repository;
 	
 	public List<User> findAll() {
-		return userRepository.findAll();
+		return repository.findAll();
 	}
 	
 	public User findById(Long id) {
-		Optional<User> op = userRepository.findById(id);
+		Optional<User> op = repository.findById(id);
 		return op.get();
+	}
+	
+	public User insert(User obj) {
+		return repository.save(obj);
 	}
 	
 }
